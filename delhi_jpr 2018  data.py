@@ -3,15 +3,15 @@ import matplotlib.pyplot as plt
 
 # Load CSV files
 df_delhi = pd.read_csv('csv data/delhi_2018.csv')
-df_ahm = pd.read_csv('csv data/ahmedabad_2018.csv')
+df_jpr = pd.read_csv('csv data/jaipur_2018.csv')
 
 # Convert Date column
 df_delhi['Date'] = pd.to_datetime(df_delhi['Date'])
-df_ahm['Date'] = pd.to_datetime(df_ahm['Date'])
+df_jpr['Date'] = pd.to_datetime(df_jpr['Date'])
 
 # Extract Month
 df_delhi['Month'] = df_delhi['Date'].dt.month
-df_ahm['Month'] = df_ahm['Date'].dt.month
+df_jpr['Month'] = df_jpr['Date'].dt.month
 
 # Monthly average AQI
 monthly_avg_delhi = (
@@ -21,7 +21,7 @@ monthly_avg_delhi = (
 )
 
 monthly_avg_ahm = (
-    df_ahm.groupby('Month')['AQI']
+    df_jpr.groupby('Month')['AQI']
     .mean()
     .reset_index()
 )
@@ -40,7 +40,7 @@ plt.plot(
     monthly_avg_ahm['Month'],
     monthly_avg_ahm['AQI'],
     marker='o',
-    label='Ahmedabad'
+    label='Jaipur'
 )
 
 plt.xlabel('Month')

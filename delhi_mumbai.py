@@ -11,8 +11,8 @@ df['Date'] = pd.to_datetime(df['Date'])
 df['Month'] = df['Date'].dt.month
 df['year'] = df['Date'].dt.year 
 
-# Filter only Delhi and Ahmedabad
-cities = ['Delhi', 'Ahmedabad']
+# Filter only Delhi and Mumbai
+cities = ['Delhi', 'Mumbai']
 df = df[df['City'].isin(cities)]
 
 # Calculate monthly average AQI
@@ -24,7 +24,7 @@ monthly_avg = (
 )
 
 # Define years to be plotted
-years = [2015, 2016, 2018, 2019, 2020]
+years = [2018, 2019, 2020]
 
 # Create subplot canvas
 # Rows = Cities, Columns = Years
@@ -59,11 +59,11 @@ for row, city in enumerate(cities):
 
 # Set Y-axis labels for cities
 ax[0, 0].set_ylabel('Delhi\nAverage AQI')
-ax[1, 0].set_ylabel('Ahmedabad\nAverage AQI')
+ax[1, 0].set_ylabel('Mumbai\nAverage AQI')
 
 # Add main title to the figure
 fig.suptitle(
-    'Monthly Average AQI Comparison: Ahmedabad vs Delhi (2015–2020)',
+    'Monthly Average AQI Comparison: Mumbai vs Delhi (2015–2020)',
     fontsize=16,
     fontweight='bold'
 )
